@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var mongoose = require('mongoose');
-var db = require('../db/db');
+var db = require('../db/mongoConnect');
+var mongoose = db.mongoose;
 
 var kittySchema = mongoose.Schema({
   name: String
@@ -30,10 +30,12 @@ router.get('/', function(req, res, next) {
    fluffy.speak();
    });*/
 
+  /*
   Kitten.find({name: 'fluffy'}, function (err, kittens) {
     if (err) return console.error(err);
     console.log(kittens)
   })
+   */
 
   res.render('index', {title: 'Kuye'});
 });
