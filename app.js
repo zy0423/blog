@@ -11,9 +11,10 @@ var template = require('art-template');
 var routes = require('./routes/index');
 /*var users = require('./routes/users');*/
 var full = require('./routes/full');
+var find = require('./routes/find');
 var about = require('./routes/about');
 var contact = require('./routes/contact');
-
+var single = require('./routes/single');
 
 var app = express();
 
@@ -39,8 +40,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/full', full);
+app.use('/find', find);
 app.use('/about', about);
 app.use('/contact', contact);
+app.use('/single', single);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

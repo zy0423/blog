@@ -6,8 +6,16 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    /*res.send('respond with a resource');*/
-    res.render('contact', {title: 'Kuye'});
+
+    var data =
+    {
+        title: 'Kuye',
+        recentPosts: [{id: 1, title: ""}, {id: 2, title: ""}, {id: 3, title: ""}],
+        archives: [{id: 1, date: ""}, {id: 2, date: ""}, {id: 3, date: ""}],
+        categorys: [{id: 1, category: ""}, {id: 2, category: ""}, {id: 3, category: ""}]
+    };
+
+    res.render('contact', data);
 });
 
 module.exports = router;

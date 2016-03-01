@@ -1,0 +1,24 @@
+{{include 'common/header'}}
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8">
+                <aside class="col-md-12">
+                    <div class="widget widget-category">
+                        <h3 class="widget-title">分类</h3>
+                        <ul>
+                            {{each recentPosts as post index}}
+                            <li>
+                                <a href="/single/{{post.id}}">{{post.value}}</a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </aside>
+            </main>
+            {{include 'common/right'}}
+        </div>
+    </div>
+</div>
+{{include 'common/footer'}}
+

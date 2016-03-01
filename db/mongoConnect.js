@@ -3,21 +3,28 @@
  */
 
 var mongoose = require('mongoose');
+var config = require('./config');
 
-mongoose.connect('mongodb://127.0.0.1:27017/test')
 
-var mongoConnect = {db: mongoose.connection, mongoose: mongoose};
+module.exports = function () {
+    /**
+     * mongodb:连接配置
+     */
+    mongoose.connect('mongodb://' + config.db.url + ':' + config.db.port + '/' + config.db.dbName)
 
-/**
- * 连接异常回调
- */
-mongoConnect.db.on('error', console.error.bind(console, 'connection error:'));
+    var mongoConnect = {db: mongoose.connection, mongoose: mongoose};
 
-/**
- * 连接成功回调
- */
-mongoConnect.db.once('open', function (callback) {
-    console.log.bind(console, 'connection succeed')
-});
+    /**
+     * 连接异常回调
+     */
+    mongoConnect.db.on('error', console.error.bind(console, 'connection error:'));
 
-module.exports = mongoConnect;
+    /**
+     * 连接成功回调
+     */
+    mongoConnect.db.once('open', function (callback) {
+        console.log.bind(console, 'connection succeed')
+    });
+
+    return mongoConnect;
+};
